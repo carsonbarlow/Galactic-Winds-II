@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Graphic Generator</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+</body>
+
+<div>
+  <div id="stroke_color">
+    stroke<br>
+    Width<input type="text" id="stroke_width_input"></imput>
+    <br>
+    <button id="stroke_color_red_up" class="red color_button">^</button>
+    <button id="stroke_color_red_down" class="red color_button">v</button>
+    <br>
+    <button id="stroke_color_green_up" class="green color_button">^</button>
+    <button id="stroke_color_green_down" class="green color_button">v</button>
+    <br>
+    <button id="stroke_color_blue_up" class="blue color_button">^</button>
+    <button id="stroke_color_blue_down" class="blue color_button">v</button>
+  </div>
+
+
+  <div id="fill_color">
+    fill<br>
+    <button id="fill_color_red_up" class="red color_button">^</button>
+    <button id="fill_color_red_down" class="red color_button">v</button>
+    <br>
+    <button id="fill_color_green_up" class="green color_button">^</button>
+    <button id="fill_color_green_down" class="green color_button">v</button>
+    <br>
+    <button id="fill_color_blue_up" class="blue color_button">^</button>
+    <button id="fill_color_blue_down" class="blue color_button">v</button>
+  </div>
+  <div id="shape_buttons">
+    <button id="elips">Elips</button>
+    <br>
+    <button id="rectangle">Rectangle</button>
+    <br>
+    <button id="triangle">Triangle</button>
+  </div>
+  <div id="dimensions">
+    Height<input type="text" id="height_input"></imput>
+    <br>
+    Width<input type="text" id="width_input"></imput>
+    <br>
+    Top<input type="text" id="top_input"></imput>
+  </div>
+</div>
+
+
+
+
+
+
+<div id="current_graphic"></div>
+
+<div id="svg_list"></div>
+
+<button id="save_svg">Save SVG</button>
+<button id="update_svg">Update SVG</button>
+<button id="delete_svg">Delete SVG</button>
+
+
+
+
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

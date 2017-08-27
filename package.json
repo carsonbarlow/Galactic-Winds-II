@@ -1,0 +1,16 @@
+{
+  "name": "lost-puppies",
+  "version": "1.0.0",
+  "description": "js13k Games 2017 entry",
+  "main": "index.js",
+  "scripts": {
+    "start": "node graphic-builder/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carson Barlow",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^16.5.2",
+    "inert": "^4.2.1"
+  }
+}

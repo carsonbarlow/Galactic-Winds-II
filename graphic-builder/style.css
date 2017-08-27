@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+#stroke_color {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.color_button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.red {
+  background-color: #C33;
+}
+
+.green {
+  background-color: #3C3;
+}
+
+.blue {
+  background-color: #33C;
+}
+
+
+#fill_color {
+  position: absolute;
+  top: 0;
+  left: 310px;
+}
+
+#shape_buttons {
+  position: absolute;
+  top: 0;
+  left: 500px;
+}
+
+#dimensions {
+    position: absolute;
+    top: 0;
+    left: 700px;
+}
+
+#current_graphic {
+    position: absolute;
+    top: 180px;
+    width: 600px;
+    height: 600px;
+    border: 2px solid;
+    background-color: #DDD;
+    left: 50px;
+}
+
+#save_svg, #update_svg, #delete_svg {
+  position: absolute;
+  top: 810px;
+  left: 50px;
+}
+
+#update_svg {
+  left: 150px;
+}
+
+#delete_svg {
+  left: 250px;
+}
+
+#svg_list {
+  position: absolute;
+  top: 150px;
+  left: 700px;
+  width: 510px;
+  background-color: #EEE;
+}
+
+.svg_list_div{
+  width: 100px;
+  height: 100px;
+  border: 1px solid white;
+  float: left;
+}
+
+.selected {
+  border: 1px solid black;
+}
