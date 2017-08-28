@@ -10,29 +10,15 @@
 <div>
   <div id="stroke_color">
     stroke<br>
-    Width<input type="text" id="stroke_width_input"></imput>
+    Width<input type="text" id="stroke_width_input"></input>
     <br>
-    <button id="stroke_color_red_up" class="red color_button">^</button>
-    <button id="stroke_color_red_down" class="red color_button">v</button>
-    <br>
-    <button id="stroke_color_green_up" class="green color_button">^</button>
-    <button id="stroke_color_green_down" class="green color_button">v</button>
-    <br>
-    <button id="stroke_color_blue_up" class="blue color_button">^</button>
-    <button id="stroke_color_blue_down" class="blue color_button">v</button>
+    Color<input type="text" id="stroke_color_input"></input>
   </div>
 
 
   <div id="fill_color">
     fill<br>
-    <button id="fill_color_red_up" class="red color_button">^</button>
-    <button id="fill_color_red_down" class="red color_button">v</button>
-    <br>
-    <button id="fill_color_green_up" class="green color_button">^</button>
-    <button id="fill_color_green_down" class="green color_button">v</button>
-    <br>
-    <button id="fill_color_blue_up" class="blue color_button">^</button>
-    <button id="fill_color_blue_down" class="blue color_button">v</button>
+    Color<input type="text" id="fill_color"></input>
   </div>
   <div id="shape_buttons">
     <button id="elips">Elips</button>
@@ -40,13 +26,19 @@
     <button id="rectangle">Rectangle</button>
     <br>
     <button id="triangle">Triangle</button>
+    <br>
+    <button id="text">Text</button>
+    <br>
+    Text<input type="text" id="text_input"></input>
+    <br>
+    Size<input type="text" id="text_size_input"></input>
   </div>
   <div id="dimensions">
-    Height<input type="text" id="height_input"></imput>
+    Height<input type="text" id="height_input"></input>
     <br>
-    Width<input type="text" id="width_input"></imput>
+    Width<input type="text" id="width_input"></input>
     <br>
-    Top<input type="text" id="top_input"></imput>
+    Top<input type="text" id="top_input"></input>
   </div>
 </div>
 
@@ -62,6 +54,21 @@
 <button id="save_svg">Save SVG</button>
 <button id="update_svg">Update SVG</button>
 <button id="delete_svg">Delete SVG</button>
+
+
+<div id="group_buttons">
+  <button id="new_group">New Group</button>
+  <button id="add_svg">Add SVG</button>
+  <button id="remove_svg">Remove SVG</button>
+  <br>
+  X<input type="text" id="group_element_x"></input>
+  <br>
+  Y<input type="text" id="group_element_y"></input>
+  <br>
+  Scale<input type="text" id="group_element_scale"></input>
+  <br>
+  Rotation<input type="text" id="group_element_rotation"></input>
+</div>
 
 
 

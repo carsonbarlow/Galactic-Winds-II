@@ -4,11 +4,6 @@
 }
 
 
-#stroke_color {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
 
 .color_button {
     width: 40px;
@@ -29,13 +24,6 @@
   background-color: #33C;
 }
 
-
-#fill_color {
-  position: absolute;
-  top: 0;
-  left: 310px;
-}
-
 #shape_buttons {
   position: absolute;
   top: 0;
@@ -46,6 +34,11 @@
     position: absolute;
     top: 0;
     left: 700px;
+}
+
+#group_buttons {
+  position: absolute;
+  left: 950px;
 }
 
 #current_graphic {
@@ -74,7 +67,7 @@
 
 #svg_list {
   position: absolute;
-  top: 150px;
+  top: 360px;
   left: 700px;
   width: 510px;
   background-color: #EEE;
