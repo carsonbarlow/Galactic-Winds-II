@@ -3,25 +3,11 @@
   padding: 0;
 }
 
-
-
 .color_button {
     width: 40px;
     height: 40px;
     font-size: 20px;
     font-weight: 900;
-}
-
-.red {
-  background-color: #C33;
-}
-
-.green {
-  background-color: #3C3;
-}
-
-.blue {
-  background-color: #33C;
 }
 
 #shape_buttons {
