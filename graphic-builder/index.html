@@ -10,35 +10,41 @@
 <div>
   <div id="stroke_color">
     stroke<br>
-    Width<input type="text" id="stroke_width_input"></input>
+    Width <input type="text" id="stroke_width_input"></input>
     <br>
-    Color<input type="text" id="stroke_color_input"></input>
+    Color <input type="text" id="stroke_color_input"></input>
   </div>
 
 
   <div id="fill_color">
     fill<br>
-    Color<input type="text" id="fill_color"></input>
+    Color <input type="text" id="fill_color_input"></input>
   </div>
+
   <div id="shape_buttons">
-    <button id="elips">Elips</button>
+    <button id="elips">New Elips</button>
     <br>
-    <button id="rectangle">Rectangle</button>
+    <button id="rectangle">New Rectangle</button>
     <br>
-    <button id="triangle">Triangle</button>
+    <button id="triangle">New Triangle</button>
     <br>
-    <button id="text">Text</button>
+    <button id="text">New Text</button>
     <br>
-    Text<input type="text" id="text_input"></input>
+    Text <input type="text" id="text_input"></input>
     <br>
-    Size<input type="text" id="text_size_input"></input>
+    Size <input type="text" id="text_size_input"></input>
+    <br>
+    Font <select id="font_select">
+      <option value="0">Arial</option>
+      <option value="1">Verdana</option>
+    </select>
   </div>
   <div id="dimensions">
-    Height<input type="text" id="height_input"></input>
+    Height <input type="text" id="height_input"></input>
     <br>
-    Width<input type="text" id="width_input"></input>
+    Width <input type="text" id="width_input"></input>
     <br>
-    Top<input type="text" id="top_input"></input>
+    Top <input type="text" id="top_input"></input>
   </div>
 </div>
 
@@ -51,8 +57,6 @@
 
 <div id="svg_list"></div>
 
-<button id="save_svg">Save SVG</button>
-<button id="update_svg">Update SVG</button>
 <button id="delete_svg">Delete SVG</button>
 
 
@@ -61,18 +65,25 @@
   <button id="add_svg">Add SVG</button>
   <button id="remove_svg">Remove SVG</button>
   <br>
-  X<input type="text" id="group_element_x"></input>
+  X <input type="text" id="group_element_x"></input>
   <br>
-  Y<input type="text" id="group_element_y"></input>
+  Y <input type="text" id="group_element_y"></input>
   <br>
-  Scale<input type="text" id="group_element_scale"></input>
+  Scale <input type="text" id="group_element_scale"></input>
   <br>
-  Rotation<input type="text" id="group_element_rotation"></input>
+  Rotation <input type="text" id="group_element_rotation"></input>
+  <br>
+  Opacity <input type="text" id="opacity_input"></input>
 </div>
 
 
-
-
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript" src="shape.js"></script>
+<script type="text/javascript" src="group.js"></script>
+<script type="text/javascript" src="transform.js"></script>
+<script type="text/javascript" src="shape_builder.js"></script>
+<script type="text/javascript" src="displayer.js"></script>
+<script type="text/javascript" src="input.js"></script>
+<!-- <script type="text/javascript" src="script.js"></script> -->
 </body>
 </html>
