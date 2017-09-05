@@ -7,7 +7,9 @@ var Transform = function(shape_index){
     y: 0,
     scale: 1,
     rotation: 0,
-    opacity: 1
+    opacity: 1,
+    original_color: '',
+    new_color: ''
   };
 
 
@@ -21,9 +23,12 @@ var Transform = function(shape_index){
     var svg_text = shapeBuilder.get_shape(stats.shape_index).build_svg();
     if (svg_text[1] == 'g'){
       svg_text = svg_text.substring(0, 2) + build_transform() + svg_text.substring(2);
+    }else if(svg_text[1] == 't'){
+      svg_text = svg_text.substring(0, 5) + build_transform() + svg_text.substring(5);
     }else{
       svg_text = svg_text.substring(0, svg_text.length - 3) + build_transform() + svg_text.substring(svg_text.length - 3);
     }
+    svg_text = transform_color(svg_text);
     return svg_text;
   };
 
@@ -38,7 +43,13 @@ var Transform = function(shape_index){
     return '';
   };
 
-
+  function transform_color(text){
+    if (stats.original_color.length < 3 || stats.new_color < 3){
+      return text;
+    }
+    var re = new RegExp(stats.original_color, 'g');
+    return text.replace(re, stats.new_color);
+  };
 
   this.update_transform_stats = update_transform_stats;
   this.build_svg = build_svg;

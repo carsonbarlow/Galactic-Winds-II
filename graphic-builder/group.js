@@ -1,9 +1,12 @@
 
 var Group = function(){
 
-
   var transform;
   var transform_list = [];
+  var stats = {
+    type: 'g',
+    transforms: transform_list
+  }
 
 
   function add_shape(shape_index){
@@ -11,6 +14,12 @@ var Group = function(){
     transform_list.push(transform);
     input.update_input(transform.stats);
   };
+
+  function update_transform_list(transforms){
+    transform_list = transforms;
+    stats.transforms = transform_list;
+    transform = transform_list[transform_list.length - 1];
+  }
 
   function build_svg(){
     var svg_text = '<g>';
@@ -41,10 +50,12 @@ var Group = function(){
     }
   };
 
+  this.stats = stats;
   this.add_shape = add_shape;
   this.build_svg = build_svg;
   this.update_display_stats = update_display_stats;
   this.remove_svg = remove_svg;
   this.resolve_deletion = resolve_deletion;
+  this.update_transform_list = update_transform_list;
 
 };

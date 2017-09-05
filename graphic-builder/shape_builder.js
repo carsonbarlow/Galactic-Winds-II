@@ -10,7 +10,7 @@ var ShapeBuilder = function(){
     shape = new Shape(type);
     input.update_input(shape.stats);
     shapes.push(shape);
-    displayer.add_svg_to_list();
+    displayer.add_svg_to_list(shape);
     displayer.display_svg(shape.build_svg());
   };
 
@@ -30,6 +30,8 @@ var ShapeBuilder = function(){
 
   function update_transform(stats){
     shape.update_display_stats(stats);
+    
+    console.log(shape);
     displayer.display_svg(shape.build_svg());
   };
 
@@ -44,7 +46,7 @@ var ShapeBuilder = function(){
   function new_group(){
     shape = new Group();
     shapes.push(shape);
-    displayer.add_svg_to_list();
+    displayer.add_svg_to_list(shape);
     displayer.display_svg('');
   };
 
@@ -65,6 +67,14 @@ var ShapeBuilder = function(){
     displayer.select_svg_div(index);
   };
 
+  function get_all_shapes(){
+    return shapes;
+  };
+
+  function set_all_shapes(_shapes_){
+    shapes = _shapes_;
+  };
+
 
   this.new_shape = new_shape;
   this.update_shape = update_shape;
@@ -76,6 +86,8 @@ var ShapeBuilder = function(){
   this.update_transform = update_transform;
   this.remove_svg = remove_svg;
   this.delete_svg = delete_svg;
+  this.get_all_shapes = get_all_shapes;
+  this.set_all_shapes = set_all_shapes;
 
 };
 

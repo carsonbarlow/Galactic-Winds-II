@@ -26,9 +26,9 @@ var Displayer = function(){
     return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 50 50" xml:space="preserve">'+svg+'</svg>';
   };
 
-  function add_svg_to_list(){
+  function add_svg_to_list(shape){
     deselect_svg_div();
-    var svg = wrap_into_svg(shapeBuilder.get_current_shape().build_svg());
+    var svg = wrap_into_svg(shape.build_svg());
     var svg_div = document.createElement('div');
     svg_div.classList.add('svg_list_div');
     svg_div.classList.add('selected');

@@ -11,7 +11,7 @@ var Shape = function(type){
     stroke_color: '000',
     text: 'text',
     font_family: 0,
-    font_size: 12
+    font_size: 10
   };
 
   var FONT_FAMILY_ENUM = ['Arial','Verdana'];
@@ -54,7 +54,7 @@ var Shape = function(type){
   };
 
   function build_text(){
-    return '<text y="50" fill="#'+stats.color+'" font-family="'+FONT_FAMILY_ENUM[stats.font_family]+'" font-size="'+stats.font_size+'"'+build_options()+' >'+stats.text+'</text>';
+    return '<text x="0" y="50" fill="#'+stats.color+'" font-family="'+FONT_FAMILY_ENUM[stats.font_family]+'" font-size="'+stats.font_size+'"'+build_options()+' >'+stats.text+'</text>';
   };
 
 

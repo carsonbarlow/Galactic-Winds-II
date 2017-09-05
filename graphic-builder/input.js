@@ -7,13 +7,16 @@ window.onload = function(e){
     group_element_scale = document.getElementById('group_element_scale'),
     group_element_rotation = document.getElementById('group_element_rotation'),
     opacity_input = document.getElementById('opacity_input');
+    original_color = document.getElementById('original_color');
+    new_color = document.getElementById('new_color');
 
     stroke_width_input = document.getElementById('stroke_width_input'),
     text_input = document.getElementById('text_input'),
     text_size_input = document.getElementById('text_size_input'),
     height_input = document.getElementById('height_input'),
     width_input = document.getElementById('width_input'),
-    top_input = document.getElementById('top_input'),
+    top_input = document.getElementById('top_input');
+
 
 
   stroke_color_input.addEventListener('input', stroke_color_input_changed);
@@ -23,6 +26,8 @@ window.onload = function(e){
   group_element_y.addEventListener('input', group_element_y_changed);
   group_element_scale.addEventListener('input', group_element_scale_changed);
   group_element_rotation.addEventListener('input', group_element_rotation_changed);
+  original_color.addEventListener('input', original_color_changed);
+  new_color.addEventListener('input', new_color_changed);
 
 
   stroke_width_input.addEventListener('input', stroke_width_input_changed);
@@ -44,6 +49,7 @@ window.onload = function(e){
   document.getElementById('remove_svg').addEventListener('click', remove_svg_pressed);
 
   document.getElementById('delete_svg').addEventListener('click', delete_svg_pressed);
+  document.getElementById('compress').addEventListener('click', compress_pressed);
 
   document.getElementById('font_select').addEventListener('change', font_select_changed);
 
@@ -110,16 +116,13 @@ window.onload = function(e){
     shapeBuilder.remove_svg();
   };
 
-  var svg_index;
-  var svg_x = 0;
-  var svg_y = 0;
-  var svg_scale = 1;
-  var svg_rotation = 0;
-
-
   function delete_svg_pressed(e){
     shapeBuilder.delete_svg();
   };
+
+  function compress_pressed(e){
+    compressor.make_big_ass_string();
+  }
 
   // inputs
   function stroke_width_input_changed(e){
@@ -175,14 +178,34 @@ window.onload = function(e){
     shapeBuilder.update_transform({opacity: parseFloat(e.target.value)});
   };
 
+  function original_color_changed(e){
+    shapeBuilder.update_transform({original_color: e.target.value.substring(0,3)});
+  };
+
+  function new_color_changed(e){
+    shapeBuilder.update_transform({new_color: e.target.value.substring(0,3)});
+  };
+
   input.update_input = update_input;
 
-  shapeBuilder.new_shape('r');
-  shapeBuilder.update_shape(test_rect);
-  shapeBuilder.new_shape('e');
-  shapeBuilder.update_shape(test_elips);
-  shapeBuilder.new_shape('t');
-  shapeBuilder.update_shape(test_triangle);
+  // shapeBuilder.new_shape('r');
+  // shapeBuilder.update_shape(test_rect);
+  // shapeBuilder.new_shape('e');
+  // shapeBuilder.update_shape(test_elips);
+  // shapeBuilder.new_shape('t');
+  // shapeBuilder.update_shape(test_triangle);
+  // shapeBuilder.new_group();
+  // shapeBuilder.add_shape_to_group(2);
+  // shapeBuilder.update_transform(test_transform_1);
+  // shapeBuilder.add_shape_to_group(1);
+  // shapeBuilder.update_transform(test_transform_2);
+  // shapeBuilder.add_shape_to_group(0);
+  // shapeBuilder.update_transform(test_transform_3);
+  // shapeBuilder.new_group();
+  // shapeBuilder.add_shape_to_group(3);
+  // shapeBuilder.update_transform(test_transform_4);
+
+  data_transfer.load();
 };
 
 
@@ -213,15 +236,52 @@ var test_rect = {
     type: 't',
     width: 60,
     height: 10,
-    color: '840',
+    color: '882',
     stroke: 2,
     stroke_color: '000'
   }
 
+var test_transform_1 = {
+    shape_index: 2,
+    x: 0,
+    y: 0,
+    scale: 1,
+    rotation: 0,
+    opacity: 1,
+    original_color: '',
+    new_color: ''
+  },
+  test_transform_2 = {
+    shape_index: 1,
+    x: 0,
+    y: 0,
+    scale: 1,
+    rotation: 90,
+    opacity: 0.8,
+    original_color: '',
+    new_color: ''
+  },
+  test_transform_3 = {
+    shape_index: 0,
+    x: 5,
+    y: 5,
+    scale: 0.9,
+    rotation: 0,
+    opacity: 1,
+    original_color: '',
+    new_color: ''
+  },
+  test_transform_4 = {
+    shape_index: 3,
+    x: 0,
+    y: 0,
+    scale: 1,
+    rotation: 0,
+    opacity: 1,
+    original_color: '882',
+    new_color: '500'
+  }
 
-// TODO: compress svg array
-// TODO: post compressed svg array to server
-// TODO: create endpoint to recieve svg array post
-// TODO: save compressed svg array to file.
+
 
 
