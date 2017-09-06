@@ -61,7 +61,7 @@ var Decompressor = function(){
         transform = transform.substring(0, i);
       }
     }
-    var t = new Transform(transform[0]);
+    var t = new Transform(transform);
     t.update_transform_stats(stats);
     return t;
   };
