@@ -23,15 +23,33 @@ var ShapeBuilder = function(){
     return shape;
   };
 
+  function validate_shape_selection(group, index){
+    if (shapes.indexOf(group) == index){
+      return false;
+    }
+    if (shapes[index] instanceof Group){
+      for (var i = 0; i < shapes[index].stats.transforms.length; i++){
+        if (!validate_shape_selection(shapes[shapes[index].stats.transforms[i].stats.shape_index], shapes.indexOf(group))){ // da faaa?
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
   function add_shape_to_group(i){
+
+    if (!validate_shape_selection(shape, i)){
+      alert('A group cannot reference itself!');
+      return;
+    };
+
     shape.add_shape(i);
     displayer.display_svg(shape.build_svg());
   };
 
   function update_transform(stats){
     shape.update_display_stats(stats);
-    
-    console.log(shape);
     displayer.display_svg(shape.build_svg());
   };
 
