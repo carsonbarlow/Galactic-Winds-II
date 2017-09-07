@@ -23,13 +23,13 @@ var ShapeBuilder = function(){
     return shape;
   };
 
-  function validate_shape_selection(group, index){
-    if (shapes.indexOf(group) == index){
+  function validate_shape_selection(group, selection){
+    if (selection == group){
       return false;
     }
-    if (shapes[index] instanceof Group){
-      for (var i = 0; i < shapes[index].stats.transforms.length; i++){
-        if (!validate_shape_selection(shapes[shapes[index].stats.transforms[i].stats.shape_index], shapes.indexOf(group))){ // da faaa?
+    if (selection instanceof Group){
+      for (var i = 0; i < selection.stats.transforms.length; i++){
+        if (!validate_shape_selection(group, shapes[selection.stats.transforms[i].stats.shape_index])){
           return false;
         }
       }
@@ -39,11 +39,10 @@ var ShapeBuilder = function(){
 
   function add_shape_to_group(i){
 
-    if (!validate_shape_selection(shape, i)){
+    if (!validate_shape_selection(shape, shapes[i])){
       alert('A group cannot reference itself!');
       return;
     };
-
     shape.add_shape(i);
     displayer.display_svg(shape.build_svg());
   };
