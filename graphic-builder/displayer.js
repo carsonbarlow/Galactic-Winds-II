@@ -4,7 +4,8 @@ var Displayer = function(){
 
 
   var main_display,
-    list_display;
+    list_display,
+    svg_index;
 
   function assign_main_display(display){
     main_display = display;
@@ -12,6 +13,10 @@ var Displayer = function(){
 
   function assign_list_display(display){
     list_display = display;
+  };
+
+  function assign_svg_index(display){
+    svg_index = display;
   };
 
   function display_svg(svg){
@@ -56,6 +61,8 @@ var Displayer = function(){
         display_svg(shapeBuilder.get_shape(i).build_svg());
         input.update_input(shapeBuilder.get_shape(i).stats);
         shapeBuilder.select_shape(i);
+
+        svg_index.innerHTML = 'SVG Index: ' + i;
       }
     }
   }
@@ -64,6 +71,8 @@ var Displayer = function(){
     deselect_svg_div();
     svg_list.childNodes[index].classList.add('selected');
     display_svg(shapeBuilder.get_shape(index).build_svg());
+    console.log( "svg_index:", svg_index );
+    console.log( "index:", index );
   };
 
   function deselect_svg_div(){
@@ -84,6 +93,7 @@ var Displayer = function(){
 
   this.assign_main_display = assign_main_display;
   this.assign_list_display = assign_list_display;
+  this.assign_svg_index = assign_svg_index;
   this.display_svg = display_svg;
   this.add_svg_to_list = add_svg_to_list;
   this.delete_svg = delete_svg;

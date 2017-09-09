@@ -33,7 +33,7 @@ var CONFIG_SHIP_HEALTH = [10, 15, 23, 33, 50],
   CONFIG_ENEMY_PROJECTILE_GRAPHICS_LEVEL_2 = [null, null, null, null, '(boss)', '(boss2'],
   CONFIG_ENEMY_PROJECTILE_GRAPHICS_LEVEL_3 = [null, null, null, null, '(boss)', '(boss2'],
   CONFIG_ENEMY_PROJECTILE_GRAPHICS_LEVEL_4 = [null, null, null, null, '(boss)', '(boss2'],
-  CONFIG_ENEMY_PROJECTILE_GRAPHICS_LEVEL_5 = [null, null, null, null, '(boss)', '(boss2'],
+  CONFIG_ENEMY_PROJECTILE_GRAPHICS_LEVEL_5 = [null, null, null, null, '(boss)', '(boss2'];
   // Make your own UI elements here, and I will reference them as needed.
   
 

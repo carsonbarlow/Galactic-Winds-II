@@ -59,6 +59,11 @@
   background-color: #EEE;
 }
 
+#svg_index {
+  position: absolute;
+  left: 270px;
+}
+
 .svg_list_div{
   width: 100px;
   height: 100px;

@@ -55,6 +55,7 @@ window.onload = function(e){
 
   displayer.assign_list_display(document.getElementById('svg_list'));
   displayer.assign_main_display(document.getElementById('current_graphic'));
+  displayer.assign_svg_index(document.getElementById('svg_index'));
 
   // =========================== text updates =======================================
 
