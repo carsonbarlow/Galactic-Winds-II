@@ -1,6 +1,6 @@
 // shield
 
-var Shield = function(teir){
+var Shield = function(tier){
 
   var max_health = CONFIG_SHIELD_HEALTH[tier],
     health = max_health,

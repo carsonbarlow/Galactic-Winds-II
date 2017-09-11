@@ -1,17 +1,26 @@
 // Config
 
+var CONFIG_FRAME_RATE = 60,
+  CONFIG_CANVAS_DOM = 'game_canvas';
+
+
+
+
+
 var CONFIG_SHIP_HEALTH = [10, 15, 23, 33, 50],
   CONFIG_PRIMARY_WEAPON_POWER = [1, 2, 3, 5, 8],
   CONFIG_PRIMARY_WEAPON_ATTACK_SPEED = [2, 3, 5, 7, 10],
-  CONFIG_PRIMARY_WEAPON_GRAPHIC = [null, null, null, null, null]; // ammo 
+  CONFIG_PRIMARY_WEAPON_GRAPHIC = [null, null, null, null, null], // ammo 
   CONFIG_AUXILIARY_WEAPON_POWER = [1, 2, 3, 5, 8],
   CONFIG_AUXILIARY_WEAPON_ATTACK_SPEED = [1, 1.5, 2, 2.5, 4],
-  ONFIG_PRIMARY_WEAPON_GRAPHIC = [null, null, null, null, null]; // ammo 
+  ONFIG_PRIMARY_WEAPON_GRAPHIC = [null, null, null, null, null], // ammo 
   CONFIG_SHIELD_HEALTH = [5, 8, 13, 21, 35],
   CONFIG_SHIELD_DOWN_TIME = [1, 1.25, 1.5, 2, 2.5],
+  CONFIG_SHIP_GRAPHIC = 2,
   CONFIG_FOREGROUND_LEVEL_1_TERRAIN = [null, null, null, '...'],
-  CONFIG_MIDGROUND_LEVEL_1_TERRAIN = [null, null, null, '...'],
-  CONFIG_BACKGROUND_LEVEL_1_TERRAIN = [null, null, null, '...'],
+  CONFIG_MIDGROUND_LEVEL_1_TERRAIN = [9,10,11],
+  CONFIG_MIDGROUND_LEVEL_1_TERRAIN_WIDTHS = [25, 10, 40],
+  CONFIG_BACKGROUND_LEVEL_1_TERRAIN = [8],
   CONFIG_FOREGROUND_LEVEL_2_TERRAIN = [null, null, null, '...'],
   CONFIG_MIDGROUND_LEVEL_2_TERRAIN = [null, null, null, '...'],
   CONFIG_BACKGROUND_LEVEL_2_TERRAIN = [null, null, null, '...'],

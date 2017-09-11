@@ -37,10 +37,12 @@ var Decompressor = function(){
       }else{
         shape_object_array[i].update_display_stats(unpack_shape(shape_string_array[i]));
       }
-      displayer.add_svg_to_list(shape_object_array[i]);
+      
     }
 
-
+    for (i = 0; i < shape_object_array.length; i++){
+      displayer.add_svg_to_list(shape_object_array[i]);
+    }
 
   };
 
