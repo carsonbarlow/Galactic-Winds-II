@@ -15,7 +15,6 @@ var Graphics = function () {
     foreground: []
   },
   draw_order = ['background', 'midground', 'enemies', 'projectiles', 'player', 'foreground'];
-
   var canvas = document.getElementById(CONFIG_CANVAS_DOM),
     ctx = canvas.getContext('2d'),
     avatar;
@@ -80,14 +79,6 @@ var Graphics = function () {
       ctx.drawImage(g.svg, g.render_x, g.render_y, 100 * g.scale, 100 * g.scale);
       ctx.restore();
 
-      ctx.beginPath();
-      ctx.strokeStyle = 'rgb(210,210,210)';
-      ctx.arc(g.pos_x, g.pos_y, g.radius, 0, Math.PI * 2, true);
-      ctx.stroke();
-
-      if (name == 'projectiles'){
-        // console.log( "list:", list[i] );
-      }
     }
     
   }

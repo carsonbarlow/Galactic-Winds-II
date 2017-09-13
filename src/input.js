@@ -16,7 +16,7 @@ var Input = function(){
     s: [],
     d: [],
     ' ': [],
-    'Enter': []
+    'enter': []
   };
 
   function event_key_down(_key_){

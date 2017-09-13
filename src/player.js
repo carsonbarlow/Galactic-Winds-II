@@ -5,8 +5,8 @@ var Player = function(){
 
   var _this = this;
 
-  var max_health = 10,
-  health = 1,
+  var max_health = 15,
+  health = 15,
   primary_weapon,
   shield = new Shield(0),
   speed = 200,
@@ -43,6 +43,10 @@ var Player = function(){
       // console.log( "delta:", delta );
       vol_y += (9.8 * delta);
       _this.graphic.update_position({x: _this.graphic.pos_x + vol_x, y: _this.graphic.pos_y + vol_y});
+      if (_this.graphic.pos_y > 900){
+        game_paused = true;
+        progress_game(true);
+      }
       return;
     }
     vol_x = 0;

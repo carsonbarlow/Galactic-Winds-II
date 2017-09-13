@@ -25,6 +25,7 @@ var GameManager = function(){
   enemy_manager.init();
 
   function update(delta){
+    if (game_paused){return;}
     player.update(delta);
     level_manager.update(delta);
     enemy_manager.update(delta);
@@ -51,6 +52,10 @@ var GameManager = function(){
       num_frames++;
     }
   })();
+
+
+
+  input.subscribe_to_key('enter', progress_game);
 
   // document.oncontextmenu = document.body.oncontextmenu = function() {return false;}
   if( window.requestAnimationFrame) {
@@ -85,3 +90,25 @@ var player,
 // globals
 var game_paused = true;
 
+var game_state = 'start';
+  var enter_debounce = false;
+  function progress_game(key_up){
+    if (!key_up){
+      return;
+    }
+    if (game_state == 'start'){
+      document.getElementById('start_screen').style['display'] = 'none';
+      document.getElementById('main-canvas').style['display'] = 'block';
+      game_state = 'play';
+      game_paused = false;
+    }else if (game_state == 'play' && game_paused){
+      document.getElementById('main-canvas').style['display'] = 'none';
+      document.getElementById('you_lose').style['display'] = 'block';
+      setTimeout(function(){
+        document.getElementById('game_over').style['display'] = 'block';
+      },1000);
+      game_state = 'game_over';
+    }else if (game_state == 'game_over'){
+      location.reload();
+    }
+  };
