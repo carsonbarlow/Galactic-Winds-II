@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <body>
+            <button id="enemyHit">Enemy Hit</button>
+            <button id="projectile">Projectile</button>
+            <button id="death">Player Death</button>
+
+            <script type="text/javascript" src="https://cdn.rawgit.com/mneubrand/jsfxr/master/jsfxr.js"></script>
+            <script>
+            function ArcadeAudio() {
+                this.sounds = {};
+              }
+              
+              ArcadeAudio.prototype.add = function( key, count, settings ) {
+                this.sounds[ key ] = [];
+                settings.forEach( function( elem, index ) {
+                  this.sounds[ key ].push( {
+                    tick: 0,
+                    count: count,
+                    pool: []
+                  } );
+                  for( var i = 0; i < count; i++ ) {
+                    var audio = new Audio();
+                    audio.src = jsfxr( elem );
+                    this.sounds[ key ][ index ].pool.push( audio );
+                  }
+                }, this );
+              };
+              
+              ArcadeAudio.prototype.play = function( key ) {
+                var sound = this.sounds[ key ];
+                var soundData = sound.length > 1 ? sound[ Math.floor( Math.random() * sound.length ) ] : sound[ 0 ];
+                soundData.pool[ soundData.tick ].play();
+                soundData.tick < soundData.count - 1 ? soundData.tick++ : soundData.tick = 0;
+              };
+              
+              var aa = new ArcadeAudio();
+              
+              aa.add( 'enemyHit', 10,
+                [
+                  [3,,0.0871,,0.2207,0.4396,,-0.445,,,,,,,,,,,1,,,,,0.5]
+                ]
+              );
+              
+              aa.add( 'projectile', 5,
+                [
+                  [0,,0.2689,0.2255,0.1971,0.9789,0.2968,-0.2687,,,,,,0.852,-0.3871,,0.0094,-0.0722,1,,,,,0.5]
+                ]
+              );
+              
+              aa.add( 'death', 3,
+                [
+                  [3,,0.3651,0.3628,0.2196,0.0289,,,,,,,,,,0.6754,0.4497,-0.0994,1,,,,,0.5]
+                ]
+              );
+              
+              document.getElementById( 'enemyHit' ).addEventListener( 'mousedown', function(){
+                aa.play( 'enemyHit' );
+              });
+              
+              document.getElementById( 'projectile' ).addEventListener( 'mousedown', function(){
+                aa.play( 'projectile' );
+              });
+              
+              document.getElementById( 'death' ).addEventListener( 'mousedown', function(){
+                aa.play( 'death' );
+              });
+            </script>
+
+    </body>
+</html>
