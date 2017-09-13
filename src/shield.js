@@ -8,13 +8,14 @@ var Shield = function(tier){
     recharge_timer,
     recharge_interval;
 
-  function damage_shield(amount){
+  function damage(amount){
     var damage_overflow = 0;
     health -= amount;
     if (health < 0){
       damage_overflow = -health;
       health = 0;
     }
+    console.log( "shield health:", health );
     clearInterval(recharge_interval);
     clearTimeout(recharge_timer);
     recharge_timer = setTimeout(shart_recharging, recharge_delay);
@@ -22,7 +23,7 @@ var Shield = function(tier){
   }
 
   function shart_recharging(){
-    recharge_interval = setInterval(rechage_shield, 5000/max_health);
+    recharge_interval = setInterval(recharge_shield, 5000/max_health);
   };
 
   function recharge_shield(){
@@ -32,6 +33,11 @@ var Shield = function(tier){
     }
   };
 
-  this.damage_shield = damage_shield;
+  function health_percentage(){
+    return health / max_health;
+  }
+
+  this.damage = damage;
+  this.health_percentage = health_percentage;
 
 };

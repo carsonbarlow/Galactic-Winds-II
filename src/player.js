@@ -6,9 +6,8 @@ var Player = function(){
   var _this = this;
 
   var max_health = 10,
-  health = 10,
-  primary_weapon = new PrimaryWeapon(0),
-  auxiliary_weapon = new PrimaryWeapon(0),
+  health = 1,
+  primary_weapon,
   shield = new Shield(0),
   speed = 200,
   vol_x = 0,
@@ -17,18 +16,20 @@ var Player = function(){
   a_pressed,
   s_pressed,
   d_pressed,
-  space_pressed;
+  space_pressed,
+  is_dying = false;
 
   this.graphic = new Graphic({
     svg: CONFIG_SHIP_GRAPHIC,
     radius: 30,
-    x: 52,
-    y: 51,
+    x: 45,
+    y: 50,
     rotation: 0,
-    scale: 4
+    scale: 1
   });
 
   function init(){
+    primary_weapon = new PrimaryWeapon(0);
     graphics.add_to_manifest(_this.graphic, 'player');
     input.subscribe_to_key('w', w_key);
     input.subscribe_to_key('a', a_key);
@@ -37,20 +38,32 @@ var Player = function(){
     input.subscribe_to_key(' ', space_key);
   };
 
-  
   function update(delta){
+    if (is_dying){
+      // console.log( "delta:", delta );
+      vol_y += (9.8 * delta);
+      _this.graphic.update_position({x: _this.graphic.pos_x + vol_x, y: _this.graphic.pos_y + vol_y});
+      return;
+    }
     vol_x = 0;
     vol_y = 0;
-    if (d_pressed){ vol_x += (speed * delta) }
-    if (a_pressed){ vol_x -= (speed * delta) }
-    if (s_pressed){ vol_y += (speed * delta) }
-    if (w_pressed){ vol_y -= (speed * delta) }
+    var constraints = utils.check_if_in_bounds(_this.graphic);
+    if (d_pressed && constraints.indexOf('right') == -1){ vol_x += (speed * delta) }
+    if (a_pressed && constraints.indexOf('left') == -1){ vol_x -= (speed * delta) }
+    if (s_pressed && constraints.indexOf('bottom') == -1){ vol_y += (speed * delta) }
+    if (w_pressed && constraints.indexOf('top') == -1){ vol_y -= (speed * delta) }
+
     _this.graphic.update_position({x: _this.graphic.pos_x + vol_x, y: _this.graphic.pos_y + vol_y});
+    if (space_pressed){fire_primary_weapon();}
+    primary_weapon.update(delta);
+    // console.log( "_this.graphic.pos_y:", _this.graphic.pos_y );
+
   };
 
 
-  function damage_ship(amount){
-    health -= amount;
+  function damage(amount){
+    health -= shield.damage(amount);
+    console.log( "health:", health );
     check_death();
   };
 
@@ -61,8 +74,11 @@ var Player = function(){
     }
   }
 
-  function check_death(){'...'};
-  function adminiseter_death(){'...'};
+  function check_death(){
+    if (health < 1){
+      is_dying = true;
+    }
+  };
 
 
   function upgrade_health(amount){
@@ -72,8 +88,6 @@ var Player = function(){
   function fire_primary_weapon(){
     primary_weapon.fire();
   };
-  function fire_auxiliary_weapon(){'...'};
-
 
   function w_key(pressed){
     if (pressed){
@@ -115,15 +129,23 @@ var Player = function(){
     }
   }
 
+  function health_percentage(){
+    return health / max_health;
+  }
+
+  function shield_percentage(){
+    return shield.health_percentage();
+  }
 
 
 
-  this.damage_ship = damage_ship;
+
+  this.damage = damage;
   this.heal_ship = heal_ship;
-  this.adminiseter_death = adminiseter_death;
   this.fire_primary_weapon = fire_primary_weapon;
-  this.fire_auxiliary_weapon = fire_auxiliary_weapon;
   this.init = init;
   this.update = update;
+  this.health_percentage = health_percentage;
+  this.shield_percentage = shield_percentage;
 
 };

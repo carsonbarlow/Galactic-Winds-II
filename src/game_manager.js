@@ -16,15 +16,18 @@ var GameManager = function(){
   enemy_manager = new EnemyManager();
   level_manager = new LevelManager();
   input = new Input();
+  utils = new Utils();
   //,
   
   graphics = new Graphics();
   player.init();
   level_manager.init();
+  enemy_manager.init();
 
   function update(delta){
     player.update(delta);
     level_manager.update(delta);
+    enemy_manager.update(delta);
   }
 
   var run = (function() {
@@ -76,7 +79,8 @@ var player,
   level_manager,
   input,
   svg_decompresor,
-  graphics
+  graphics,
+  utils;
 
 // globals
 var game_paused = true;

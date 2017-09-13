@@ -2,8 +2,6 @@
 
 var Graphic = function(spec){
 
-  var _this = this;
-
   this.svg = document.createElement('IMG');
   this.svg.src = DOMURL.createObjectURL(new Blob([svg_graphics_array[spec.svg]], {type: 'image/svg+xml;charset=utf-8'}));
   this.radius = spec.radius;
@@ -20,13 +18,12 @@ var Graphic = function(spec){
   this.render_y = this.pos_y - this.y;
 
 
-
   function update_position(cord){
-    _this.pos_x = cord.x;
-    _this.pos_y = cord.y;
+    this.pos_x = cord.x;
+    this.pos_y = cord.y;
 
-    _this.render_x = _this.pos_x - _this.x;
-    _this.render_y = _this.pos_y - _this.y;
+    this.render_x = this.pos_x - this.x;
+    this.render_y = this.pos_y - this.y;
   }
 
   this.update_position = update_position;

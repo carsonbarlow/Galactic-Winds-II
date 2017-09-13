@@ -25,8 +25,8 @@ var Paralaxer = function(_type_, _pos_x_){
   };
   var SPEEDS = {
     background: 20,
-    midground: 40,
-    foreground: 80
+    midground: 60,
+    foreground: 120
   };
 
   var SCALES = {
@@ -37,17 +37,18 @@ var Paralaxer = function(_type_, _pos_x_){
 
   var POS_YS = {
     background: (720/2) + 20,
-    midground: 720 - 250,
+    midground: 720 - 190,
     foreground: 720 - 100
   };
+
 
   var graphic;
 
   function init(){
     pos_y = POS_YS[type];
-    var random_terrian = parseInt(Math.random() * svg_key[type][0].length);
-      graphic = new Graphic({
-      svg: svg_key[type][random_terrian],
+    var random_terrian = parseInt(Math.random() * svg_key[type][level].length);
+    graphic = new Graphic({
+      svg: svg_key[type][level][random_terrian],
       radius: 0,
       x: 50,
       y: 50,
@@ -59,7 +60,7 @@ var Paralaxer = function(_type_, _pos_x_){
 
   function update(delta){
     pos_x -= (SPEEDS[type] * delta);
-    if (pos_x == (SCALES[type] * 50)){
+    if (pos_x < -(SCALES[type] * 50)){
       pos_x += 2400;
     }
     graphic.update_position({x: pos_x, y: pos_y});

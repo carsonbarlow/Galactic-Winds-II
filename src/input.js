@@ -19,7 +19,8 @@ var Input = function(){
     'Enter': []
   };
 
-  function event_key_down(key){
+  function event_key_down(_key_){
+    var key = _key_.toLowerCase();
     if (key_subscriptions[key]){
       for (var i = 0; i < key_subscriptions[key].length; i++){
         key_subscriptions[key][i](true);
@@ -27,7 +28,8 @@ var Input = function(){
     }
   };
 
-  function event_key_up(key){
+  function event_key_up(_key_){
+    var key = _key_.toLowerCase();
     if (key_subscriptions[key]){
       for (var i = 0; i < key_subscriptions[key].length; i++){
         key_subscriptions[key][i](false);
